@@ -1,7 +1,3 @@
-// src/components/ProductCard.js
-
-import React from 'react';
-
 const ProductCard = ({ product }) => {
   return (
     <div className="bg-dark-blue rounded-lg shadow-lg overflow-hidden text-off-white">
@@ -15,20 +11,22 @@ const ProductCard = ({ product }) => {
         {product.plans.map((plan) => (
           <div key={plan.title} className="bg-mid-blue p-3 rounded-md">
             <h3 className="font-bold border-b-2 border-light-blue pb-2 mb-2 text-center">{plan.title}</h3>
-            <ul>
-              {plan.options.map((option) => (
-                <li key={option.duration} className="flex justify-between py-1">
-                  <span>{option.duration}</span>
-                  <span className="font-semibold">{option.price}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="bg-white rounded-lg px-3">
+              <ul>
+                {plan.options.map((option) => (
+                  <li key={option.duration} className="flex justify-between py-1 text-black">
+                    <span>{option.duration}</span>
+                    <span className="font-semibold">{option.price}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         ))}
       </div>
 
       {/* Rules Section */}
-      <div className="bg-dark-blue p-4">
+      <div className="bg- p-4">
         <ul className="list-disc list-inside space-y-1 text-sm">
           {product.rules.map((rule, index) => (
             <li key={index}>{rule}</li>

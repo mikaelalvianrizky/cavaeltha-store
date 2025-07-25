@@ -1,23 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+
+import React, { useState, useEffect } from 'react';
+import Navbar from './components/Navbar';
+import Categories from './components/Categories';
+import SearchBar from './components/SearchBar';
+import ProductList from './components/ProductList';
+import { products as initialProducts, categories } from './data/products';
 
 function App() {
+  const [products, setProducts] = useState(initialProducts);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('Streaming');
+
+  // Effect to filter products whenever searchQuery or selectedCategory changes
+  useEffect(() => {
+    let filteredProducts = initialProducts.filter(product =>
+      product.category === selectedCategory
+    );
+
+    if (searchQuery) {
+      filteredProducts = filteredProducts.filter(product =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+    
+    setProducts(filteredProducts);
+
+  }, [searchQuery, selectedCategory]);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App min-h-screen font-sans">
+      <Navbar />
+      <main>
+        <Categories 
+          categories={categories} 
+          selectedCategory={selectedCategory} 
+          setSelectedCategory={setSelectedCategory}
+        />
+        <SearchBar 
+          searchQuery={searchQuery} 
+          setSearchQuery={setSearchQuery} 
+        />
+        <ProductList products={products} />
+      </main>
     </div>
   );
 }

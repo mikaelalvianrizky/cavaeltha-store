@@ -10,7 +10,11 @@ module.exports = {
         'mid-blue': '#7886C7',
         'light-blue': '#A9B5DF',
         'off-white': '#FFF2F2',
-      }
+      },
+      // Add this section to set the default font
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+      },
     },
   },
   plugins: [],

@@ -3,7 +3,7 @@ import React from 'react';
 const WelcomeMessage = () => {
     return (
         <div className="container mx-auto px-4 py-2">
-            <div className="bg-white text-dark-blue p-6 rounded-lg shadow-md text-center leading-relaxed">
+            <div className="bg-off-white text-dark-blue p-6 rounded-lg shadow-md text-center leading-relaxed">
                 
                 <p className="font-bold text-lg">
                 <span role="img" aria-label="sparkle">❥</span> Haiii bestiee! Welcome to Cavaelth Store

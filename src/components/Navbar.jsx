@@ -46,15 +46,17 @@ const Navbar = ({ onHomeClick }) => {
       {/* 3. Mobile Dropdown Menu: Appears when isMenuOpen is true */}
       {isMenuOpen && (
         <div className="md:hidden mt-4 bg-mid-blue rounded-lg">
-          <ul className="flex flex-col items-center space-y-2 p-4">
-            <li>
-              <button onClick={handleHomeAndCloseMenu} className="block py-2 border-collapse hover:text-dark-blue">Home</button>
+          {/* --- CHANGES ARE IN THIS LIST --- */}
+          <ul className="flex flex-col items-center p-2">
+            {/* Each list item now has a bottom border, except for the last one */}
+            <li className="w-full text-center border-b border-white last:border-b-0">
+              <button onClick={handleHomeAndCloseMenu} className="block w-full py-3 hover:bg-dark-blue/20 rounded-t-md">Home</button>
             </li>
-            <li>
-              <a href="#" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-dark-blue">Cara Pembelian</a>
+            <li className="w-full text-center border-b border-white last:border-b-0">
+              <a href="#" onClick={() => setIsMenuOpen(false)} className="block w-full py-3 hover:bg-dark-blue/20">Cara Pembelian</a>
             </li>
-            <li>
-              <a href="#" onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-dark-blue">Kebijakan Pengguna</a>
+            <li className="w-full text-center border-b border-white last:border-b-0">
+              <a href="#" onClick={() => setIsMenuOpen(false)} className="block w-full py-3 hover:bg-dark-blue/20 rounded-b-md">Kebijakan Pengguna</a>
             </li>
           </ul>
         </div>

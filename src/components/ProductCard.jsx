@@ -16,7 +16,7 @@ const ProductCard = ({ product }) => {
 
             {/* 1. Title Container (Top part) */}
             <div className="bg-mid-blue p-3 rounded-t-md">
-              <h3 className="font-bold text-center">{plan.title}</h3>
+              <h3 className="font-bold text-center text-white">{plan.title}</h3>
             </div>
 
             {/* 2. Price Container (Bottom part) */}

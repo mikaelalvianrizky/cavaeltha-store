@@ -12,13 +12,10 @@ function App() {
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(null);
-
-  // 1. Add new state to track if we are on the homepage
   const [isHomePage, setIsHomePage] = useState(true);
 
-  // This effect now runs only when the selected category or search query changes
   useEffect(() => {
-    if (!selectedCategory) return; // Don't filter if no category is selected
+    if (!selectedCategory) return; 
 
     let filteredProducts = initialProducts.filter(product =>
       product.category === selectedCategory
@@ -34,32 +31,32 @@ function App() {
 
   }, [searchQuery, selectedCategory]);
 
-  // 2. Function to handle clicking a category
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
-    setIsHomePage(false); // Switch to the product view
+    setIsHomePage(false);
   };
 
-  // 3. Function to handle clicking the "Home" button in the navbar
   const handleGoHome = () => {
     setIsHomePage(true);
-    setSelectedCategory(null); // Reset category
-    setProducts([]); // Clear products
-    setSearchQuery(''); // Clear search
+    setSelectedCategory(null);
+    setProducts([]);
+    setSearchQuery('');
   };
 
   return (
     <div className="App min-h-screen font-sans">
       <Navbar onHomeClick={handleGoHome} />
       <main>
-        <Categories onCategorySelect={handleCategorySelect} categories={categories} />
+        {/* --- CHANGE IS HERE --- */}
+        <Categories 
+          onCategorySelect={handleCategorySelect} 
+          categories={categories} 
+          activeCategory={selectedCategory} // Pass the active category as a prop
+        />
         
-        {/* 4. Conditional rendering based on isHomePage state */}
         {isHomePage ? (
-          // If it's the homepage, only show the Welcome Message
           <WelcomeMessage />
         ) : (
-          // Otherwise, show the Search Bar and Product List
           <>
             <SearchBar 
               searchQuery={searchQuery} 

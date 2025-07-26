@@ -6,6 +6,7 @@ import Categories from './components/Categories';
 import WelcomeMessage from './components/WelcomeMessage';
 import SearchBar from './components/SearchBar';
 import ProductList from './components/ProductList';
+import ComingSoon from './components/ComingSoon'; // 1. Import the new component
 import { products as initialProducts, categories } from './data/products';
 
 function App() {
@@ -14,21 +15,21 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [isHomePage, setIsHomePage] = useState(true);
 
+  // This useEffect logic remains the same
   useEffect(() => {
-    if (!selectedCategory) return; 
+    if (!selectedCategory) return;
 
-    let filteredProducts = initialProducts.filter(product =>
-      product.category === selectedCategory
+    let filteredProducts = initialProducts.filter(
+      (product) => product.category === selectedCategory
     );
 
     if (searchQuery) {
-      filteredProducts = filteredProducts.filter(product =>
+      filteredProducts = filteredProducts.filter((product) =>
         product.name.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
-    
-    setProducts(filteredProducts);
 
+    setProducts(filteredProducts);
   }, [searchQuery, selectedCategory]);
 
   const handleCategorySelect = (category) => {
@@ -47,22 +48,27 @@ function App() {
     <div className="App min-h-screen font-sans">
       <Navbar onHomeClick={handleGoHome} />
       <main>
-        {/* --- CHANGE IS HERE --- */}
-        <Categories 
-          onCategorySelect={handleCategorySelect} 
-          categories={categories} 
-          activeCategory={selectedCategory} // Pass the active category as a prop
+        <Categories
+          onCategorySelect={handleCategorySelect}
+          categories={categories}
+          activeCategory={selectedCategory}
         />
-        
+
         {isHomePage ? (
           <WelcomeMessage />
         ) : (
           <>
-            <SearchBar 
-              searchQuery={searchQuery} 
-              setSearchQuery={setSearchQuery} 
+            <SearchBar
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
             />
-            <ProductList products={products} />
+            
+            {/* 2. Check if products exist, otherwise show ComingSoon */}
+            {products.length > 0 ? (
+              <ProductList products={products} />
+            ) : (
+              <ComingSoon />
+            )}
           </>
         )}
       </main>

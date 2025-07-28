@@ -6,7 +6,7 @@ const WelcomeMessage = () => {
             <div className="bg-off-white text-dark-blue p-6 rounded-lg shadow-md text-center leading-relaxed">
                 
                 <p className="font-bold text-lg">
-                <span role="img" aria-label="sparkle">❥</span> Haiii bestiee! Welcome to Cavaelth Store
+                <span role="img" aria-label="sparkle">❥</span> Haiii bestiee! Welcome to Cavaeltha Store
                 </p>
                 
                 <p className="italic text-sm mt-2">
@@ -32,7 +32,7 @@ const WelcomeMessage = () => {
                 
                 <p className="font-bold mt-6">
                 <span role="img" aria-label="leaf">🍃</span> Makasiiih udah mampir! <br/>
-                Cavaelth sayang kamuuu (´｡• ᵕ •｡`)<span role="img" aria-label="heart">♥</span>
+                Cavaeltha sayang kamuuu (´｡• ᵕ •｡`)<span role="img" aria-label="heart">♥</span>
                 </p>
                 
                 <p className="text-xs italic mt-4">

@@ -67,7 +67,7 @@ function App() {
             {products.length > 0 ? (
               <ProductList products={products} />
             ) : (
-              <ComingSoon />
+              <ComingSoon activeCategory={selectedCategory} />
             )}
           </>
         )}
